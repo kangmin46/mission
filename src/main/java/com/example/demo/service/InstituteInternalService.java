@@ -5,6 +5,8 @@ import com.example.demo.repository.InstituteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class InstituteInternalService {
@@ -17,5 +19,10 @@ public class InstituteInternalService {
 
     public Institute save(final Institute institute) {
         return instituteRepository.save(institute);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Institute> findAll() {
+        return instituteRepository.findAll();
     }
 }
