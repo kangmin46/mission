@@ -4,7 +4,6 @@ import com.example.demo.Entity.User;
 import com.example.demo.exception.MisMatchPasswordException;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.vo.SignUpLoginDto;
-
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +27,7 @@ public class UserInternalService {
     @Transactional(readOnly = true)
     public User findByName(String name, String password) {
         User user = userRepository.findByName(name);
-        if(!BCrypt.checkpw(password, user.getPassword())) {
+        if (!BCrypt.checkpw(password, user.getPassword())) {
             throw new MisMatchPasswordException();
         }
         return user;

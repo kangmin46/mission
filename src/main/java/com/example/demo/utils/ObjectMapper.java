@@ -18,7 +18,7 @@ public class ObjectMapper {
     private StatisticsDto generateStatisticsDto(Object[] statistic) {
         String name = String.valueOf(statistic[0]);
         int amount = Integer.parseInt(statistic[1].toString());
-        int year= Integer.parseInt(statistic[2].toString());
+        int year = Integer.parseInt(statistic[2].toString());
         return new StatisticsDto(name, amount, year);
     }
 

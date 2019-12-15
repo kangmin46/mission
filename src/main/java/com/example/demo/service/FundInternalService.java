@@ -2,23 +2,23 @@ package com.example.demo.service;
 
 import com.example.demo.Entity.Fund;
 import com.example.demo.repository.FundRepository;
-import com.example.demo.utils.DtoMapper;
+import com.example.demo.utils.ObjectMapper;
 import com.example.demo.vo.StatisticsDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
 public class FundInternalService {
 
     private final FundRepository fundRepository;
+    private final ObjectMapper objectMapper;
 
-    public FundInternalService(FundRepository fundRepository) {
+    public FundInternalService(FundRepository fundRepository, ObjectMapper objectMapper) {
         this.fundRepository = fundRepository;
+        this.objectMapper = objectMapper;
     }
 
     public Fund save(final Fund fund) {
@@ -27,7 +27,11 @@ public class FundInternalService {
 
     public List<StatisticsDto> findStatisticsDto() {
         List<Object[]> statistics = fundRepository.findStatistics();
-        DtoMapper dtoMapper = new DtoMapper();
-        return dtoMapper.mapToStatisticsDto(statistics);
+        return objectMapper.mapToStatisticsDto(statistics);
+    }
+
+    public List<Double> findRecommendData(String name) {
+        List<Object[]> recommendData = fundRepository.findRecommendData(name);
+        return objectMapper.mapToLinearRegressionData(recommendData);
     }
 }

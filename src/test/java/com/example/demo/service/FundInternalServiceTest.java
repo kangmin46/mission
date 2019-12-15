@@ -14,16 +14,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
 public class FundInternalServiceTest {
-    
+
     @InjectMocks
     private FundInternalService fundInternalService;
-    
+
     @Mock
     private FundRepository fundRepository;
 
@@ -33,13 +31,13 @@ public class FundInternalServiceTest {
     @Test
     void findStatisticsDto_test() {
         List<Object[]> statistics = new ArrayList<>();
-        Object[] record = {"국민은행","13231","2005"};
+        Object[] record = {"국민은행", "13231", "2005"};
         statistics.add(record);
         when(fundRepository.findStatistics()).thenReturn(statistics);
-        when(objectMapper.mapToStatisticsDto(statistics)).thenReturn(Arrays.asList(new StatisticsDto("국민은행", 13231,2005)));
+        when(objectMapper.mapToStatisticsDto(statistics)).thenReturn(Arrays.asList(new StatisticsDto("국민은행", 13231, 2005)));
 
         List<StatisticsDto> statisticsDto = fundInternalService.findStatisticsDto();
         assertThat(statisticsDto).hasSize(1)
-            .containsExactly(new StatisticsDto("국민은행", 13231,2005));
+            .containsExactly(new StatisticsDto("국민은행", 13231, 2005));
     }
 }

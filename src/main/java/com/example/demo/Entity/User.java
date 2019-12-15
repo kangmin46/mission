@@ -4,7 +4,6 @@ import com.example.demo.exception.InvalidPasswordException;
 import com.example.demo.exception.InvalidUserNameException;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.naming.InvalidNameException;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,13 +28,13 @@ public class User {
     }
 
     private void checkValidName(String name) {
-        if(StringUtils.isBlank(name) || StringUtils.isEmpty(name)) {
+        if (StringUtils.isBlank(name) || StringUtils.isEmpty(name)) {
             throw new InvalidUserNameException();
         }
     }
 
     private void checkValidPassword(String password) {
-        if(StringUtils.isBlank(password) || StringUtils.isEmpty(password)) {
+        if (StringUtils.isBlank(password) || StringUtils.isEmpty(password)) {
             throw new InvalidPasswordException();
         }
     }

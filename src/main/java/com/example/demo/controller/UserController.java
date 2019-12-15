@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.response.SignUpLoginResponse;
 import com.example.demo.service.JwtService;
 import com.example.demo.service.UserService;
 import com.example.demo.vo.SignUpLoginDto;

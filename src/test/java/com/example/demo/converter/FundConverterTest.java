@@ -4,7 +4,6 @@ import com.example.demo.Entity.Fund;
 import com.example.demo.Entity.Institute;
 import com.example.demo.Institution;
 import com.example.demo.Record;
-import com.example.demo.converter.FundConverter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

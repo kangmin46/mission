@@ -1,18 +1,12 @@
 package com.example.demo.controller;
 
 import com.example.demo.BasicControllerTest;
-import com.example.demo.vo.SignUpLoginDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import reactor.core.publisher.Mono;
-
-import static com.example.demo.JwtInterceptor.AUTHORIZATION_FIELD;
-import static com.example.demo.controller.UserController.USER_URL;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient

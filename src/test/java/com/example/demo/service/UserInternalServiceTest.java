@@ -24,7 +24,7 @@ public class UserInternalServiceTest {
     @Test
     void login() {
         String hashPassword = BCrypt.hashpw("password", BCrypt.gensalt());
-        User user = new User("kangmin",hashPassword);
+        User user = new User("kangmin", hashPassword);
         when(userRepository.findByName("kangmin")).thenReturn(user);
 
         User findUser = userInternalService.findByName("kangmin", "password");

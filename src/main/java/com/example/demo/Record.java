@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class Record {
-
     private final List<String> columns;
 
     public Record(final List<String> columns) {

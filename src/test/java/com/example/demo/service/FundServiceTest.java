@@ -1,10 +1,8 @@
 package com.example.demo.service;
 
-import com.example.demo.repository.FundRepository;
 import com.example.demo.response.FundResponse;
 import com.example.demo.response.RecommendResponse;
 import com.example.demo.utils.LinearRegression;
-import com.example.demo.utils.ObjectMapper;
 import com.example.demo.vo.AmountPerYear;
 import com.example.demo.vo.StatisticsDto;
 import org.junit.jupiter.api.Test;
@@ -17,7 +15,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)

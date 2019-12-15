@@ -6,15 +6,15 @@ import com.example.demo.exception.InvalidInstitutionNameException;
 import java.util.Arrays;
 
 public enum Institution {
-    HOUSING_CITY_FUND("주택도시기금","hou00"),
-    KOOKMIN("국민은행","bhk00"),
-    WOORI("우리은행","bhk01"),
-    SHINHAN("신한은행","bhk02"),
-    HANKOOK_CITY("한국시티은행","bhk03"),
-    HANNA("하나은행","bhk04"),
-    NONGHYUB_SOOHYUN("농협은행/수협은행","bhk05"),
-    WAEWHAN("외환은행","bhk06"),
-    ETC("기타은행","bhk07");
+    HOUSING_CITY_FUND("주택도시기금", "hou00"),
+    KOOKMIN("국민은행", "bhk00"),
+    WOORI("우리은행", "bhk01"),
+    SHINHAN("신한은행", "bhk02"),
+    HANKOOK_CITY("한국시티은행", "bhk03"),
+    HANNA("하나은행", "bhk04"),
+    NONGHYUB_SOOHYUN("농협은행/수협은행", "bhk05"),
+    WAEWHAN("외환은행", "bhk06"),
+    ETC("기타은행", "bhk07");
 
     private final String name;
     private final String code;

@@ -9,15 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVDataReader {
-    private static final String DATA_RESOURCE_NAME = "사전과제3.csv";
     private final List<String[]> data;
 
-    public CSVDataReader() {
-        data = read();
+    public CSVDataReader(String dataResourceName) {
+        data = read(dataResourceName);
     }
 
-    private static List<String[]> read() {
-        ClassPathResource classPathResource = new ClassPathResource(DATA_RESOURCE_NAME);
+    private static List<String[]> read(String dataResourceName) {
+        ClassPathResource classPathResource = new ClassPathResource(dataResourceName);
         List<String[]> csvData = new ArrayList<>();
         try (CSVReader reader = new CSVReader(new InputStreamReader(classPathResource.getInputStream()))) {
             for (String[] record : reader) {
@@ -36,6 +35,4 @@ public class CSVDataReader {
     public List<String[]> getBody() {
         return data.subList(1, data.size());
     }
-
-
 }

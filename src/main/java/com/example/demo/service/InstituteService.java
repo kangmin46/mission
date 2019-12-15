@@ -3,28 +3,20 @@ package com.example.demo.service;
 import com.example.demo.Entity.Institute;
 import com.example.demo.Institution;
 import com.example.demo.Record;
+import com.example.demo.converter.InstituteConverter;
 import com.example.demo.converter.StatisticsConverter;
 import com.example.demo.response.FundAverageMinMaxResponse;
 import com.example.demo.response.InstituteResponse;
 import com.example.demo.response.MaxInstituteResponse;
-import com.example.demo.response.RecommendResponse;
-import com.example.demo.utils.LinearRegression;
 import com.example.demo.utils.RecordParser;
-import com.example.demo.converter.InstituteConverter;
-import com.example.demo.utils.TimeUtils;
-import com.example.demo.vo.MinMaxFund;
 import com.example.demo.vo.StatisticsDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Month;
-import java.time.YearMonth;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

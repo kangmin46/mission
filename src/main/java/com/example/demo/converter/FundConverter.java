@@ -3,14 +3,8 @@ package com.example.demo.converter;
 import com.example.demo.Entity.Fund;
 import com.example.demo.Entity.Institute;
 import com.example.demo.Record;
-import com.example.demo.response.FundResponse;
-import com.example.demo.vo.AmountPerYear;
-import com.example.demo.vo.StatisticsDto;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 

@@ -19,7 +19,7 @@ import static com.example.demo.JwtInterceptor.REFRESH_REQUEST_PREFIX;
 @Service
 public class JwtService {
     private static final String SECRET = "RobbySecretMuchMoreSecretMoreMoreSecret";
-    private static final String CHAR_SET ="UTF-8";
+    private static final String CHAR_SET = "UTF-8";
 
     public String createToken(String userId) {
         return Jwts.builder()
@@ -44,12 +44,12 @@ public class JwtService {
     public String getRefreshToken() throws UnsupportedEncodingException {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         String jwt = request.getHeader(AUTHORIZATION_FIELD)
-            .replace(REFRESH_REQUEST_PREFIX,"")
+            .replace(REFRESH_REQUEST_PREFIX, "")
             .trim();
 
         Jws<Claims> claims = Jwts.parser()
-                .setSigningKey(SECRET.getBytes(CHAR_SET))
-                .parseClaimsJws(jwt);
+            .setSigningKey(SECRET.getBytes(CHAR_SET))
+            .parseClaimsJws(jwt);
 
         return createToken(claims.getBody().get("userId").toString());
     }
