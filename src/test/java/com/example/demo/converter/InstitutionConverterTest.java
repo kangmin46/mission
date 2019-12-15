@@ -4,6 +4,7 @@ import com.example.demo.Entity.Institute;
 import com.example.demo.Institution;
 import com.example.demo.Record;
 import com.example.demo.response.InstituteResponse;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -15,7 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class InstitutionConverterTest {
 
     @Test
-    void to_emtities_test() {
+    @DisplayName("Institute 엔티티로 잘 변환해 주는 지 테스")
+    void to_entities_test() {
         Record record = new Record(Arrays.asList("주택도시기금", "국민은행", "우리은행", "신한은행", "한국시티은행", "하나은행", "농협은행/수협은행", "외환은행", "기타은행"));
         List<Institute> institutes = InstituteConverter.toEntities(record);
 
@@ -34,6 +36,7 @@ public class InstitutionConverterTest {
     }
 
     @Test
+    @DisplayName("InstituteResponses 로 잘 변환해주는 지 테스트")
     void to_responses() {
         List<InstituteResponse> instituteResponses = InstituteConverter.toResponses(
             Arrays.asList(

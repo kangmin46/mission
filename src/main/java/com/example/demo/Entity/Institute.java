@@ -18,9 +18,9 @@ public class Institute {
     private String name;
 
     @Column
-    private int code;
+    private String code;
 
-    public Institute(String name, int code) {
+    public Institute(String name, String code) {
         this.name = name;
         this.code = code;
     }
@@ -49,5 +49,9 @@ public class Institute {
 
     public String getName() {
         return name;
+    }
+
+    public String getCode() {
+        return code;
     }
 }

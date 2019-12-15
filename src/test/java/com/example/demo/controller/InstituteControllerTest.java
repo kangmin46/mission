@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import static com.example.demo.controller.FundController.FUND_URL;
 import static com.example.demo.controller.InstituteController.INSTITUTE_URL;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -21,12 +22,12 @@ public class InstituteControllerTest {
     @DisplayName("전체 년도(2005~2016)에서 은행코드 입력으로 들어온 은행의 지원금액 평균 중에서 가장 작은 금액과 큰 금액을 출력하는 API테스")
     void find_min_max_average() {
         webTestClient.post()
-            .uri("/funds")
+            .uri(FUND_URL)
             .exchange()
             .expectStatus().isOk();
 
         webTestClient.get()
-            .uri(INSTITUTE_URL + "/bhk06/averages")
+            .uri(INSTITUTE_URL + "/averages?instituteName=외환은행")
             .exchange()
             .expectStatus()
             .isOk()
@@ -36,10 +37,10 @@ public class InstituteControllerTest {
     }
 
     @Test
-    @DisplayName("각 년도 별 각 기관의 전체 지원금액 중에서 가장 큰금액의 기관명을 출력하는 API개발")
+    @DisplayName("각 년도 별 각 기관의 전체 지원금액 중에서 가장 큰금액의 기관명을 출력하는 API 테스")
     void find_max_institute() {
         webTestClient.post()
-            .uri("/funds")
+            .uri(FUND_URL)
             .exchange()
             .expectStatus().isOk();
 
