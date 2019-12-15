@@ -27,6 +27,9 @@ public class User {
         this.password = password;
     }
 
+    public User() {
+    }
+
     private void checkValidName(String name) {
         if (StringUtils.isBlank(name) || StringUtils.isEmpty(name)) {
             throw new InvalidUserNameException();
