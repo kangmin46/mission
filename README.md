@@ -109,6 +109,30 @@
             ]
          }
         ```
+    6. API 인증을 위해 JWT(Json Web Token)를 이용해서 Token 기반 API 인증 기능 구현
+        * url :/users/signup  : 회원가입 
+        * Httpstatus : 200 ok
+        * url :/users/login : 로그인
+        * HttpStatus : 200 ok
+    
+    7. 특정 은행의 특정 달에 대해서 2018년도 해당 달에 금융지원 금액을 예측하는 API 개발
+        * url : /funds/predict/{month}/{instituteName}
+        * HttpStatus : 200 ok
+    
+* h2 데이터 베이스 접속
+    * localhost:8080/h2-console 로 접속
+        * id : sa , 비밀번호 : password
+
+## 빌드 및 실행 방법
+```
+#!/bin/bash
+$ git clone https://github.com/kangmin46/kakaopay-mission.git
+$ cd kakaopay-mission
+$ ./gradlew clean build
+$ java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
+```
+
+
     
 
 
