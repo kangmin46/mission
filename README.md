@@ -1,5 +1,15 @@
 # kakao pay 과제 유형 3번
 
+
+## 빌드 및 실행 방법
+```
+#!/bin/bash
+$ git clone https://github.com/kangmin46/kakaopay-mission.git
+$ cd kakaopay-mission
+$ ./gradlew clean build
+$ java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
+```
+
 ## 개발 프레임워크
 * 웹 프레임워크
     * Spring boot
@@ -10,7 +20,10 @@
 * 빌드도구
     * gradle
 * 기타 라이브러리  
-    * OpenCSV   
+    * OpenCSV (csv파일을 읽기 위한 라이브러리)
+    * jjwt (jwt 구현을 위한 라이브러리)
+    * jbcrypt(패스워드 암호화를 위한 라이브러리)
+    * apache.commons (선형회귀 구현을 위한 라이브러리)
 
 ## 문제 해결 전략
 
@@ -118,19 +131,19 @@
     7. 특정 은행의 특정 달에 대해서 2018년도 해당 달에 금융지원 금액을 예측하는 API 개발
         * url : /funds/predict/{month}/{instituteName}
         * HttpStatus : 200 ok
-    
+        ex ) 출력 예시 
+        ```
+        {
+            "bank" : "bnk01",
+            "year" : 2018,
+            "month" : 2,
+            "amount" : 4700
+        }
+        ```
+
 * h2 데이터 베이스 접속
     * localhost:8080/h2-console 로 접속
         * id : sa , 비밀번호 : password
-
-## 빌드 및 실행 방법
-```
-#!/bin/bash
-$ git clone https://github.com/kangmin46/kakaopay-mission.git
-$ cd kakaopay-mission
-$ ./gradlew clean build
-$ java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
-```
 
 
     
