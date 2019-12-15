@@ -7,16 +7,22 @@ import com.example.demo.converter.StatisticsConverter;
 import com.example.demo.response.FundAverageMinMaxResponse;
 import com.example.demo.response.InstituteResponse;
 import com.example.demo.response.MaxInstituteResponse;
+import com.example.demo.response.RecommendResponse;
+import com.example.demo.utils.LinearRegression;
 import com.example.demo.utils.RecordParser;
 import com.example.demo.converter.InstituteConverter;
+import com.example.demo.utils.TimeUtils;
 import com.example.demo.vo.MinMaxFund;
 import com.example.demo.vo.StatisticsDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Month;
+import java.time.YearMonth;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,7 +30,6 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class InstituteService {
-
     private final InstituteInternalService instituteInternalService;
     private final FundInternalService fundInternalService;
 
@@ -41,17 +46,34 @@ public class InstituteService {
         return institutes;
     }
 
+    @Transactional(readOnly = true)
     public List<InstituteResponse> find() {
         List<Institute> institutes = instituteInternalService.findAll();
         return InstituteConverter.toResponses(institutes);
     }
 
-    public FundAverageMinMaxResponse findAverageMinMax(String instituteCode) {
+    @Transactional(readOnly = true)
+    public FundAverageMinMaxResponse findAverageMinMax(String instituteName) {
         List<StatisticsDto> statisticsDtos = fundInternalService.findStatisticsDto();
-        Institution institution = Institution.ofCode(instituteCode);
+        Institution institution = Institution.of(instituteName);
         List<StatisticsDto> statisticsAboutInstitute = getStatisticsAboutInstitute(statisticsDtos, institution);
 
-        return StatisticsConverter.convertToFundAverageMinMaxResponse(statisticsAboutInstitute, institution);
+        StatisticsDto maxStatisticsDto = getMaxStatisticsDto(statisticsAboutInstitute);
+        StatisticsDto minStatisticsDto = getMinStatisticsDto(statisticsAboutInstitute);
+
+        return StatisticsConverter.convertToFundAverageMinMaxResponse(maxStatisticsDto, minStatisticsDto, institution);
+    }
+
+    private static StatisticsDto getMinStatisticsDto(List<StatisticsDto> statisticsAboutInstitute) {
+        return statisticsAboutInstitute.stream()
+            .min(Comparator.comparing(StatisticsDto::getAmount))
+            .orElseThrow(NoSuchElementException::new);
+    }
+
+    private static StatisticsDto getMaxStatisticsDto(List<StatisticsDto> statisticsAboutInstitute) {
+        return statisticsAboutInstitute.stream()
+            .max(Comparator.comparing(StatisticsDto::getAmount))
+            .orElseThrow(NoSuchElementException::new);
     }
 
     private List<StatisticsDto> getStatisticsAboutInstitute(List<StatisticsDto> statisticsDtos, Institution institution) {
