@@ -4,8 +4,8 @@
 ## 빌드 및 실행 방법
 ```
 #!/bin/bash
-$ git clone https://github.com/kangmin46/kakaopay-mission.git
-$ cd kakaopay-mission
+$ git clone https://github.com/kangmin46/mission.git
+$ cd mission
 $ ./gradlew clean build
 $ java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
 ```
