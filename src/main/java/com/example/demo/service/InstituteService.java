@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.Entity.Institute;
 import com.example.demo.Institution;
-import com.example.demo.Record;
+import com.example.demo.vo.Record;
 import com.example.demo.converter.InstituteConverter;
 import com.example.demo.converter.StatisticsConverter;
 import com.example.demo.response.FundAverageMinMaxResponse;

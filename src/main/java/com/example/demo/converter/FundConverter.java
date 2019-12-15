@@ -2,17 +2,17 @@ package com.example.demo.converter;
 
 import com.example.demo.Entity.Fund;
 import com.example.demo.Entity.Institute;
-import com.example.demo.Record;
+import com.example.demo.vo.Record;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class FundConverter {
-    public static final int YEAR_INDEX = 0;
-    public static final int MONTH_INDEX = 1;
-    public static final int AMOUNT_START_INDEX = 2;
-    public static final int AMOUNT_END_INDEX = 11;
+    private static final int YEAR_INDEX = 0;
+    private static final int MONTH_INDEX = 1;
+    private static final int AMOUNT_START_INDEX = 2;
+    private static final int AMOUNT_END_INDEX = 11;
 
     public static List<Fund> toEntities(final Record record, final List<Institute> institutes) {
         List<Integer> parsedRecord = record.getColumns().stream()

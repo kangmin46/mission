@@ -2,7 +2,7 @@ package com.example.demo.converter;
 
 import com.example.demo.Entity.Institute;
 import com.example.demo.Institution;
-import com.example.demo.Record;
+import com.example.demo.vo.Record;
 import com.example.demo.response.InstituteResponse;
 
 import java.util.List;

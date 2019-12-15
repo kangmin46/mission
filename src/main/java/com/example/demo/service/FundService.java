@@ -3,7 +3,7 @@ package com.example.demo.service;
 import com.example.demo.Entity.Fund;
 import com.example.demo.Entity.Institute;
 import com.example.demo.Institution;
-import com.example.demo.Record;
+import com.example.demo.vo.Record;
 import com.example.demo.converter.FundConverter;
 import com.example.demo.response.FundResponse;
 import com.example.demo.response.RecommendResponse;
