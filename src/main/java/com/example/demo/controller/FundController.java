@@ -45,9 +45,9 @@ public class FundController {
         return ResponseEntity.ok(fundResponse);
     }
 
-    @GetMapping("/predict/{month}/{instituteName}")
-    public ResponseEntity predict(@PathVariable Integer month, @PathVariable String instituteName) {
-        RecommendResponse recommendResponse = fundService.recommend(month, instituteName);
+    @GetMapping("/predict/{month}/{instituteCode}")
+    public ResponseEntity predict(@PathVariable Integer month, @PathVariable String instituteCode) {
+        RecommendResponse recommendResponse = fundService.recommend(month, instituteCode);
         return ResponseEntity.ok(recommendResponse);
     }
 }

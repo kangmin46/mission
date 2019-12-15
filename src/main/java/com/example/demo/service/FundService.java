@@ -92,8 +92,8 @@ public class FundService {
             .collect(Collectors.groupingBy(StatisticsDto::getYear));
     }
 
-    public RecommendResponse recommend(Integer month, String instituteName) {
-        List<Double> recommendDatas = fundInternalService.findRecommendData(instituteName);
+    public RecommendResponse recommend(Integer month, String instituteCode) {
+        List<Double> recommendDatas = fundInternalService.findRecommendData(instituteCode);
 
         int recommendDataSize = recommendDatas.size();
         int lastYearRemainMonth = TimeUtils.calculateLastYearRemainMonth(recommendDataSize);
@@ -101,6 +101,6 @@ public class FundService {
 
         double predictResult = linearRegression.predict(recommendDatas, predictVariable);
 
-        return new RecommendResponse(RECOMMEND_YEAR, Institution.of(instituteName).getCode(), month, predictResult);
+        return new RecommendResponse(RECOMMEND_YEAR, Institution.of(instituteCode).getCode(), month, predictResult);
     }
 }

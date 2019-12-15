@@ -105,7 +105,7 @@ $ java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
         * 요구사항에는 외환은행에 대한 요청만 처리하는 API였지만 기관코드를 PathVariable로 받아서 다른 기관의 지원금액도
         조회할 수 있게 하였습니다.
         requestMethod : GET
-        requetUrl : /institutes/{instituteCode}/averages  (외환은행의 기관코드는 "bhk06")
+        requetUrl : /institutes/averages  (외환은행의 기관코드는 "bhk06")
         httpStatusCode : 200 Ok
         ```
         {
@@ -123,13 +123,13 @@ $ java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
          }
         ```
     6. API 인증을 위해 JWT(Json Web Token)를 이용해서 Token 기반 API 인증 기능 구현
-        * url :/users/signup  : 회원가입 
+        * requestUrl :/users/signup  : 회원가입 
         * Httpstatus : 200 ok
-        * url :/users/login : 로그인
+        * requestUrl :/users/login : 로그인
         * HttpStatus : 200 ok
     
     7. 특정 은행의 특정 달에 대해서 2018년도 해당 달에 금융지원 금액을 예측하는 API 개발
-        * url : /funds/predict/{month}/{instituteName}
+        * requestUrl : /funds/predict/{month}/{instituteName}
         * HttpStatus : 200 ok
         ex ) 출력 예시 
         ```
