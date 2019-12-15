@@ -3,12 +3,14 @@ package com.example.demo.controller;
 import com.example.demo.response.FundAverageMinMaxResponse;
 import com.example.demo.response.InstituteResponse;
 import com.example.demo.response.MaxInstituteResponse;
+import com.example.demo.response.RecommendResponse;
 import com.example.demo.service.InstituteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -30,9 +32,9 @@ public class InstituteController {
         return ResponseEntity.ok(instituteResponses);
     }
 
-    @GetMapping("/{instituteCode}/averages")
-    public ResponseEntity<FundAverageMinMaxResponse> findAverage(@PathVariable String instituteCode) {
-        FundAverageMinMaxResponse fundAverageMinMaxResponse = instituteService.findAverageMinMax(instituteCode);
+    @GetMapping("/averages")
+    public ResponseEntity<FundAverageMinMaxResponse> findAverage(@RequestParam String instituteName) {
+        FundAverageMinMaxResponse fundAverageMinMaxResponse = instituteService.findAverageMinMax(instituteName);
         return ResponseEntity.ok(fundAverageMinMaxResponse);
     }
 

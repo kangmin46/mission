@@ -4,31 +4,31 @@ import com.example.demo.Entity.Fund;
 import com.example.demo.Entity.Institute;
 import com.example.demo.Record;
 import com.example.demo.response.FundResponse;
-import com.example.demo.response.MaxInstituteResponse;
 import com.example.demo.vo.AmountPerYear;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import com.example.demo.vo.StatisticsDto;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class FundConverter {
-    private static final Logger logger = LoggerFactory.getLogger(FundConverter.class);
+    public static final int YEAR_INDEX = 0;
+    public static final int MONTH_INDEX = 1;
+    public static final int AMOUNT_START_INDEX = 2;
+    public static final int AMOUNT_END_INDEX = 11;
+
     public static List<Fund> toEntities(final Record record, final List<Institute> institutes) {
-        List<Integer> collect = record.getColumns().stream()
+        List<Integer> parsedRecord = record.getColumns().stream()
             .map(Integer::parseInt)
             .collect(Collectors.toList());
 
-        Integer year = collect.get(0);
-        Integer month = collect.get(1);
-        logger.debug(">>> {}", institutes.size());
-        return IntStream.range(2, 11)
-            .mapToObj(i -> new Fund(year, month, collect.get(i), institutes.get(i - 2)))
+        Integer year = parsedRecord.get(YEAR_INDEX);
+        Integer month = parsedRecord.get(MONTH_INDEX);
+        return IntStream.range(AMOUNT_START_INDEX, AMOUNT_END_INDEX)
+            .mapToObj(i -> new Fund(year, month, parsedRecord.get(i), institutes.get(i - AMOUNT_START_INDEX)))
             .collect(Collectors.toList());
     }
 }
